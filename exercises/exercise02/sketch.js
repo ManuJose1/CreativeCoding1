@@ -1,81 +1,29 @@
-
-
-let params = {
-	angle: 180,
-	angleMin: 0,
-    angleMax: 360,
-    angleStep: 5,
-
-	posX: 250,
-	posXMin: 0,
-    posXMax: 500,
-    posXStep: 2,
-    
-    posY: 250,
-	posYMin: 0,
-    posYMax: 500,
-    
-    shapeW: 150,
-	shapeWMin: 10,
-    shapeWMax: 290,
-
-    shapeH: 150,
-	shapeHMin: 10,
-    shapeHMax: 290,
-    
-    bgColor: [180, 255, 255],
-    fColor: [255, 0, 0],
-    fillToggle: true
-    
-}
-
-
-let myPos;
-let visible = true;
-var gui;
-
+let ball1;
+let ball2;
+let ball3;
+let ball4;
 
 function setup() {
-    angleMode(DEGREES);
     createCanvas(500, 500);
-    background(params.bgColor);
-    
-    myPos = createVector(params.posX, params.posY);
-    // create the GUI
-	gui = createGui('My Settings');
-	gui.addObject(params);
-    gui.setPosition(650, 250);
- 
-    
+    background(0,255,0);
+    ball1 = new BallRGB(10,10,2,3,10,255,0,0);
+    ball2 = new BallRGB(10,10,5,5,10,0,0,255);
+    ball3 = new BallRGB(200,240,15,0,20, 200,20,10);
+    ball4 = new BallRGB(100,240,15,0,20,200,200,0);
 }
 
 function draw() {
-    clear();
-    myPos = createVector(params.posX, params.posY);
-    //console.log(myPos.x, myPos.y);
+    background(0,255,0);
+    noStroke();
+    ball1.drawBall();
+    ball1.moveBall();
 
-    background(params.bgColor);
-    rectMode(CENTER);
+    ball2.drawBall();
+    ball2.moveBall();
 
-    if (params.fillToggle == true) {
-        fill(params.fColor);
-    } else {
-        noFill();
-    }
-    push();
-    translate(myPos.x, myPos.y);
-    rotate(params.angle);
-        rect(0, 0,params.shapeW,params.shapeH, 25,75,25,75);
-    pop();
+    ball3.drawBall();
+    ball3.moveBall();
+
+    ball4.drawBall();
+    ball4.moveBall();
 }
-
-// check for keyboard events
-function keyPressed() {
-    switch(key) {
-      // type p to hide / show the GUI
-      case 'p':
-        visible = !visible;
-        if(visible) gui.show(); else gui.hide();
-        break;
-    }
-  }

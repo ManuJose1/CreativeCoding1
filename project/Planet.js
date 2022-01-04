@@ -1,9 +1,14 @@
 class Planet {
     constructor() {
-        this.pos = createVector(width/2, height/2)
-        this.size = 50;
+        this.pos = createVector(width / 2, height / 2)
+        this.size = 30;
         this.mass = 20;
-        this.Grav = 1;
+        this.grav = 1;
+    }
+
+    updateVals(ms,gv){
+        this.mass = ms;
+        this.grav = gv;
     }
 
     attract(Moon) {
@@ -14,7 +19,7 @@ class Planet {
         Newtons law of universal gravitation:
         Force = Gravitational constant * mass1 * mass2 / distance between masses
         */
-        let strength = (this.Grav * this.mass * Moon.mass) / (dist * dist);
+        let strength = (this.grav * this.mass * Moon.mass) / (dist * dist);
         force.setMag(strength);
         return force;
     }
@@ -24,7 +29,7 @@ class Planet {
         ellipseMode(CENTER);
         noStroke();
         fill(10, 200, 10);
-        ellipse(mouseX, mouseY, this.size, this.size);
+        ellipse(this.pos.x, this.pos.y, this.size, this.size);
     }
 
 }
