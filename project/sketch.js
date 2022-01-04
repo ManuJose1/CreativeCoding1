@@ -37,7 +37,7 @@ function setup() {
 
     // Create GUI
     gui = createGui('GUI');
-    gui.setPosition(930, 10);
+    gui.setPosition(930, 100);
     gui.addObject(params);
 }
 
